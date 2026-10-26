@@ -31,6 +31,8 @@ export default function Header() {
                     <NavLink to="/catalog">Catalog</NavLink>
                     <NavLink to="/about">About</NavLink>
                     {!loading && (isAuthenticated ? <>
+                        <NavLink to="/create">Add Recipe</NavLink>
+                        <NavLink to="/my-recipes">My Recipes</NavLink>
                         <NavLink to="/account">My Account</NavLink>
                         <button className="nav-button" onClick={logoutHandler} disabled={busy}>{busy ? 'Signing out...' : 'Logout'}</button>
                     </> : <>

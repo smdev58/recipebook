@@ -6,7 +6,10 @@ RecipeBook is my React course project. Users can browse recipes, create an accou
 
 ## Demo Link
 
-The project is not deployed yet.
+https://recipebook-umber.vercel.app/
+
+Email: tester@example.com
+Password: RecipeTest!74mK9p
 
 ## Documentation
 

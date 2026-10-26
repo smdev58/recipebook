@@ -136,13 +136,34 @@ label {
     font-weight: bold;
 }
 
-input {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 18px;
     border: 1px solid #999;
     border-radius: 3px;
     font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.delete-button {
+    background: #a11a1a;
+    border-color: #a11a1a;
+}
+
+.delete-button:hover {
+    background: #7c1414;
 }
 
 .error {
