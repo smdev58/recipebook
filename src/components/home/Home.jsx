@@ -1,11 +1,32 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import * as recipeApi from '../../api/recipe-api';
+import RecipeCard from '../recipe-card/RecipeCard';
 
 export default function Home() {
+    const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const controller = new AbortController();
+        recipeApi.getLatest(controller.signal)
+            .then(setRecipes)
+            .catch(err => { if (!controller.signal.aborted) setError(err.message); })
+            .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+        return () => controller.abort();
+    }, []);
+
     return (
         <section>
             <h1>Welcome to RecipeBook</h1>
-            <p>A place for recipes and cooking ideas.</p>
-            <Link to="/about">About RecipeBook</Link>
+            <p>Find something to cook and share your own recipes.</p>
+            <p><Link to="/catalog">View all recipes</Link></p>
+            <h2>Latest recipes</h2>
+            {loading && <p role="status">Loading recipes...</p>}
+            {error && <p role="alert" className="error">{error}</p>}
+            {!loading && !error && recipes.length === 0 && <p>No recipes yet.</p>}
+            <div className="recipe-list">{recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}</div>
         </section>
     );
 }
