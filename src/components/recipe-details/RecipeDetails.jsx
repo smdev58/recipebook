@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import AuthContext from '../../contexts/auth-context';
 import * as recipeApi from '../../api/recipe-api';
+import Comments from '../comments/Comments';
 
 export default function RecipeDetails() {
     const { recipeId } = useParams();
@@ -28,7 +29,7 @@ export default function RecipeDetails() {
     }, [recipeId]);
 
     async function deleteHandler() {
-        if (!window.confirm('Delete this recipe?')) return;
+        if (!window.confirm('Delete this recipe and its comments?')) return;
         setDeleting(true);
         setError('');
         try {
@@ -57,6 +58,7 @@ export default function RecipeDetails() {
                 <button className="delete-button" onClick={deleteHandler} disabled={deleting}>{deleting ? 'Deleting...' : 'Delete'}</button>
             </div>}
             {error && <p className="error" role="alert">{error}</p>}
+            <Comments key={recipeId} recipeId={recipeId} />
         </section>
     );
 }
