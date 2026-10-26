@@ -11,6 +11,10 @@ RecipeBook is my React course project. Users can browse recipes, create an accou
 - Email: `tester@example.com`
 - Password: `RecipeTest!74mK9p`
 
+## AI Assistance
+
+GPT-6.1 Sol was used to help with the visual design and integrate the logo and AI-generated homepage background image.
+
 ## Documentation
 
 The project uses React, React Router, Vite and CSS.

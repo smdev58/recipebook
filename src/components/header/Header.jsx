@@ -25,7 +25,12 @@ export default function Header() {
     return (
         <header>
             <div className="header-content">
-                <Link to="/" className="site-name">RecipeBook</Link>
+                <Link to="/" className="site-name">
+                    <span className="logo-symbol" aria-hidden="true">
+                        <img className="site-logo" src="/recipebook-logo.png" alt="" width="120" height="120" />
+                    </span>
+                    <span className="brand-word">Recipe<span>Book</span></span>
+                </Link>
                 <nav aria-label="Main navigation">
                     <NavLink to="/" end>Home</NavLink>
                     <NavLink to="/catalog">Catalog</NavLink>

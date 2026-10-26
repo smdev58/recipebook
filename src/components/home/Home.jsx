@@ -18,10 +18,13 @@ export default function Home() {
     }, []);
 
     return (
-        <section>
-            <h1>Welcome to RecipeBook</h1>
-            <p>Find something to cook and share your own recipes.</p>
-            <p><Link to="/catalog">View all recipes</Link></p>
+        <section className="home-page">
+            <div className="home-intro">
+                <p className="home-eyebrow">Cook · Share · Discover</p>
+                <h1>Welcome to <span>RecipeBook</span></h1>
+                <p>Find something to cook and share your own recipes.</p>
+                <p><Link to="/catalog">View all recipes <span aria-hidden="true">→</span></Link></p>
+            </div>
             <h2>Latest recipes</h2>
             {loading && <p role="status">Loading recipes...</p>}
             {error && <p role="alert" className="error">{error}</p>}
