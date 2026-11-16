@@ -9,6 +9,7 @@ import RecipeDetails from './components/recipe-details/RecipeDetails';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Account from './components/account/Account';
+import MyFavorites from './components/my-favorites/MyFavorites';
 import MyRecipes from './components/my-recipes/MyRecipes';
 import RecipeCreate from './components/recipe-create/RecipeCreate';
 import RecipeEdit from './components/recipe-edit/RecipeEdit';
@@ -32,6 +33,7 @@ export default function App() {
                     <Route element={<PrivateGuard />}>
                         <Route path="/account" element={<Account />} />
                         <Route path="/create" element={<RecipeCreate />} />
+                        <Route path="/my-favorites" element={<MyFavorites />} />
                         <Route path="/my-recipes" element={<MyRecipes />} />
                         <Route path="/recipes/:recipeId/edit" element={<RecipeEdit />} />
                     </Route>

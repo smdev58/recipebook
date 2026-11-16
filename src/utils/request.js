@@ -75,10 +75,10 @@ async function readResponse(response) {
     return data;
 }
 
-export default async function request(path, method = 'GET', data = null, signal) {
+export default async function request(path, method = 'GET', data = null, signal, prefer = 'return=representation') {
     if (!baseUrl || !apiKey) throw new Error('Supabase configuration is missing.');
     const session = await refreshSession();
-    const headers = { apikey: apiKey, Prefer: 'return=representation' };
+    const headers = { apikey: apiKey, Prefer: prefer };
     if (session) headers.Authorization = `Bearer ${session.access_token}`;
     if (data) headers['Content-Type'] = 'application/json';
     const response = await fetch(`${baseUrl}/rest/v1${path}`, {

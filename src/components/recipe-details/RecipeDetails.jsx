@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import AuthContext from '../../contexts/auth-context';
 import * as recipeApi from '../../api/recipe-api';
+import FavoriteButton from '../favorite-button/FavoriteButton';
 import Comments from '../comments/Comments';
 
 export default function RecipeDetails() {
@@ -58,6 +59,7 @@ export default function RecipeDetails() {
                 <button className="delete-button" onClick={deleteHandler} disabled={deleting}>{deleting ? 'Deleting...' : 'Delete'}</button>
             </div>}
             {error && <p className="error" role="alert">{error}</p>}
+            {user && <FavoriteButton key={user.id + ":" + recipe.id} userId={user.id} recipeId={recipe.id} />}
             <Comments key={recipeId} recipeId={recipeId} />
         </section>
     );

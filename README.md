@@ -74,7 +74,7 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 
 Use a publishable key, not the database password or a secret key. The `.env.local` file is ignored by Git. Restart Vite after changing it.
 
-Supabase needs the recipes and comments tables with row-level security enabled. Enable email/password sign-in and set the Auth Site URL to your frontend address.
+Supabase needs the recipes and comments tables with row-level security enabled. Run [favorites.sql](supabase/favorites.sql) once in the Supabase SQL Editor to enable saved recipes. Enable email/password sign-in and set the Auth Site URL to your frontend address.
 
 Start the project:
 
@@ -110,7 +110,7 @@ The app lets people browse recipes with images, ingredients and cooking instruct
 
 Guests can open Home, About, Catalog, recipe Details, Login and Register. They can read recipes and comments, but cannot create or change records.
 
-Logged-in users can open My Account, Add Recipe and My Recipes. They can comment on recipes, including their own. Only the author can edit or delete a recipe. The database also checks these permissions.
+Logged-in users can open My Account, Add Recipe, My Recipes and My Favorites. They can save a recipe from Details and remove it from Details or My Favorites. Favorites are private to each account. They can comment on recipes, including their own. Only the author can edit or delete a recipe. The database also checks these permissions.
 
 ### 3. Authentication and Session Handling
 
@@ -133,6 +133,7 @@ Context shares the current user across the app. localStorage keeps the session a
 | `/account` | My Account, logged-in users |
 | `/create` | Add Recipe, logged-in users |
 | `/my-recipes` | My Recipes, logged-in users |
+| `/my-favorites` | My Favorites, logged-in users |
 | `/recipes/:recipeId/edit` | Edit Recipe, author only |
 | Any other address | Page not found |
 
