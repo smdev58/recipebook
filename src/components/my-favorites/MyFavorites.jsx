@@ -37,6 +37,7 @@ function FavoritesList({ userId }) {
     return (
         <section>
             <h1>My Favorites</h1>
+            {!loading && !error && <p role="status">{recipes.length} saved {recipes.length === 1 ? 'recipe' : 'recipes'}</p>}
             <p><Link to="/catalog">Browse recipes</Link></p>
             {loading && <p role="status">Loading favorites...</p>}
             {error && <p className="error" role="alert">{error}</p>}
